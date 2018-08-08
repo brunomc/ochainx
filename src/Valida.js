@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import VideoPlayer from './VideoPlayer';
 import axios from 'axios';
 
 
@@ -26,8 +27,7 @@ class Valida extends Component {
     render() {
       return (
         <div>
-       <p>{JSON.stringify(this.state.produto)}</p>
-       <p>qualquer coisa aqui</p>
+            <VideoPlayer/ >
        </div>
       );
     }
