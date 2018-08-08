@@ -26,3 +26,26 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+.Container {
+font-family: 'Source Sans Pro', sans-serif;
+  color: #FFF;
+  text-shadow: 0.1em 0.1em 0.2em black
+}
+
+.procedencia {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #FFF;
+  text-shadow: 0.1em 0.1em 0.2em black;
+  font-size: 3em;
+}
+
+.Container h2 {
+  font-size: 2.5em;
+}
+.Container h3 {
+  font-size: 1.8em;
+}
+.Container h5 {
+  font-size: 1em;
+}
