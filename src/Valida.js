@@ -3,31 +3,51 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import VideoPlayer from './VideoPlayer';
 import axios from 'axios';
 
-
+const style = {
+   imagem: {
+       marginTop:'50%'
+   }
+  };
    
 class Valida extends Component {
     constructor(props){
         super(props);
         this.state ={
-            produto:{}
+            produto:{},
+            procedencia:''
         }
     }
     componentWillMount(){
         axios.get('http://ochain.herokuapp.com/api/data/product'+ this.props.location.pathname).then(res=>{
           console.log('RESULTADO: ', res);
-          this.setState({
-            produto: res.data
-          });
+          if(res.data.nameProduct == ""){
+            this.setState({
+                produto: {},
+                procedencia:'FALSO'
+              });
+          }else {
+            this.setState({
+                produto: res.data,
+                procedencia:'VERDADEIRO'
+              });
+          }
+         
 
         }).catch(error=>{
-            console.log("ERRO: ", error);
+            this.setState({
+                produto: {},
+                procedencia:'ERRO DE VERIFICACAO'
+              });
         });
 
     }
     render() {
       return (
         <div>
-            <VideoPlayer/ >
+            <VideoPlayer />
+            <h1>{this.state.procedencia}</h1>
+            <img style={{padding:'50vh'}} src="http://www.avll.it/wp-content/uploads/2016/05/Alerts.gif" />
+            <img style={{padding:'50vh'}} src="http://ds90media.com/wp-content/uploads/2014/12/check-mark.png" />
        </div>
       );
     }
