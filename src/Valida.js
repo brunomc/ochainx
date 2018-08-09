@@ -16,7 +16,7 @@ class Valida extends Component {
         super(props);
         this.state ={
             produto:{},
-            procedencia:''
+            procedencia:'',
         }
     }
     componentWillMount(){
@@ -25,40 +25,28 @@ class Valida extends Component {
           if(res.data.nameProduct === ""){
             this.setState({
                 produto: {},
-                procedencia:'FALSO'
+                procedencia:'Falso'
               });
           }else {
             this.setState({
                 produto: res.data,
-                procedencia:'VERDADEIRO'
+                procedencia:'Verdadeiro'
               });
           }
-
-
         }).catch(error=>{
             this.setState({
                 produto: {},
                 procedencia:'ERRO DE VERIFICACAO'
               });
         });
-
     }
     render() {
       return (
         <div>
             <VideoPlayer />
             <h1 className="procedencia">{this.state.procedencia}</h1>
-
-            <Texto
-               manufacturer="Aurora"
-               nameProduct= "Cerveja Artesanal"
-               productionDate="08/08/2018"
-               text1="Link do registro na blockchain:"
-               link="https://etherscan.io">
+            <Texto procedencia={this.state.procedencia}>
             </Texto>
-
-          {/*  <img style={{padding:'50vh'}} src="http://www.avll.it/wp-content/uploads/2016/05/Alerts.gif" />
-            <img style={{padding:'50vh'}} src="http://ds90media.com/wp-content/uploads/2014/12/check-mark.png" /> */}
        </div>
       );
     }
